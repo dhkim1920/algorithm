@@ -4,8 +4,10 @@ def solution(priorities, location):
     answer = []
     tmp_stack = []
 
+    priorities = [[x, i] for i,x in enumerate(priorities)]
+    print(priorities)
     tmp = (priorities[location], location)
-    # print(tmp)
+    print(tmp)
 
     while len(priorities) > 0:
         if priorities[-1] != max(priorities):
@@ -24,7 +26,7 @@ def solution(priorities, location):
             print("--------------------------")
 
     print(answer)
-    return answer.index(tmp) + 1
+    return answer
 
 
 print(solution([2, 1, 3, 2], 2))

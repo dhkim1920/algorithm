@@ -14,8 +14,7 @@ def solution(citations):
             if citations[i] == 0:
                 continue
             else:
-                if citations[i] == answer:
-                    print(citations[i])
+
 
         print("--------------------")
 
