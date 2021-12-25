@@ -4,30 +4,37 @@ def solution(priorities, location):
     answer = []
     tmp_stack = []
 
-    priorities = [[x, i] for i,x in enumerate(priorities)]
+    priorities = [[x, i] for i, x in enumerate(priorities)]
     print(priorities)
-    tmp = (priorities[location], location)
+    tmp = (priorities[location])
     print(tmp)
 
     while len(priorities) > 0:
-        if priorities[-1] != max(priorities):
-            print("before: " + str(priorities))
+        m = max(priorities)
+        if priorities[-1] != m:
             tmp_stack.append(priorities.pop())
-            print("after: " + str(priorities))
+            print("after not max pop: " + str(priorities))
             print("--------------------------")
         else:
-            print("before else pop: " + str(priorities))
             v = priorities.pop()
-            print("else pop: " + str(priorities))
-            answer.append((v, len(priorities)))
+            print("else max pop: " + str(priorities))
+            answer.append(v)
+            if len(priorities) > 0:
+                t = priorities[-1] == max(priorities)
             while len(tmp_stack) > 0:
-                priorities.append((tmp_stack.pop()))
-                print("else append tmp_stack: " + str(priorities))
+                # print("while : " + str(priorities) + " , top: " + str(priorities[-1]) + ", max: " + str(m))
+                if t:
+                    answer.append(tmp_stack.pop())
+                    print("else append tmp_stack to answer: " + str(answer))
+                else:
+                    priorities.append(tmp_stack.pop())
+                    print("else append tmp_stack to priorities: " + str(priorities))
             print("--------------------------")
 
     print(answer)
-    return answer
+    return answer.index(tmp) + 1
 
 
-print(solution([2, 1, 3, 2], 2))
-# print(solution([1, 1, 9, 1, 1, 1], 0))
+
+# print(solution([2, 1, 3, 2], 2))
+print(solution([1, 1, 9, 1, 1, 1], 0))
