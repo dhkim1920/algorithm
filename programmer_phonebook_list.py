@@ -1,25 +1,25 @@
-# https://programmers.co.kr/learn/courses/30/lessons/42576
+# https://programmers.co.kr/learn/courses/30/lessons/42577
 
-def solution(participant, completion):
-    answer = ''
 
-    finish_dict = {k: 0 for k in participant}
+def solution(phone_book):
+    answer = True
 
-    for i in participant:
-        if i in finish_dict:
-            finish_dict[i] += 1
+    phone_book = {k: 0 for k in phone_book}
 
-    for i in completion:
-        if i in finish_dict:
-            finish_dict[i] -= 1
+    print(phone_book)
 
-    for k in finish_dict.keys():
-        if finish_dict[k] == 1:
-            return k
+    for i in range(len(phone_book)):
+        print(phone_book[i])
+
+    # for i in range(len(phone_book)):
+    #     for j in range(i + 1, len(phone_book)):
+    #         if phone_book[i] in phone_book[j]:
+    #             print(phone_book[i] + " " + phone_book[j])
+    #             return False
 
     return answer
 
 
-print(solution(["leo", "kiki", "eden"], ["eden", "kiki"]))
-print(solution(["marina", "josipa", "nikola", "vinko", "filipa"], ["josipa", "filipa", "marina", "nikola"]))
-print(solution(["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"]))
+print(solution(["119", "97674223", "1195524421"]))
+print(solution(["123", "456", "789"]))
+print(solution(["12", "123", "1235", "567", "88"]))
